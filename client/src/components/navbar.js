@@ -15,8 +15,12 @@ export const Navbar = () => {
 		<div className="navBar">
 			<Link to="/home"> Home</Link>
             <Link to="/create-recipe"> Create Recipe</Link>
-            <Link to="/saved-recipes"> Saved Recipes</Link>
-            {!cookie.access_token ? (<Link to="/auth"> Login / Register</Link>) : (<button onClick={logout}>Logout </button>)}
+            {!cookie.access_token ? (<Link to="/auth"> Login / Register</Link>) : (
+				<>
+				<Link to="/saved-recipes"> Saved Recipes</Link>
+				<button onClick={logout}>Logout </button>
+				</>
+			)}
 		</div>
     );
 };

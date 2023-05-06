@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { RecipeModel } from "../models/Recipes.js";
 import { UserModel } from "../models/Users.js";
+import { verifyToken } from './users.js';
 
 const router = express.Router();
 
@@ -16,7 +17,7 @@ router.get("/", async (req, res) => {
 });
 
 // Add new Recipe API request
-router.post("/create", async (req, res) => {
+router.post("/create", verifyToken, async (req, res) => {
     const recipe = new RecipeModel(req.body,);
 
     try {
@@ -28,7 +29,7 @@ router.post("/create", async (req, res) => {
 });
 
 // Add RecipeID to User API request
-router.put("/", async (req, res) => {
+router.put("/", verifyToken, async (req, res) => {
     try {
         const recipe = await RecipeModel.findById(req.body.recipeID);
         const user = await UserModel.findById(req.body.userID);
