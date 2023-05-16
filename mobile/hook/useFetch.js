@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { RAPID_API_KEY } from "@env";
+import { RAPID_API_KEY, SERVER_URL } from "@env";
 
 const rapidApiKey = RAPID_API_KEY;
 
@@ -11,7 +11,7 @@ const useFetch = (endpoint, query) => {
 
     const options = {
         method: 'GET',
-        url: `https://jsearch.p.rapidapi.com/${endpoint}`,
+        url: SERVER_URL+`/${endpoint}`,
         headers: {
           'X-RapidAPI-Key': rapidApiKey,
           'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'

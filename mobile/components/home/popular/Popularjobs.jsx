@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
+import { useState } from "react";
 import { useRouter } from "expo-router";
 
 import styles from './popularjobs.style';
@@ -15,6 +16,13 @@ const Popularjobs = () => {
       num_pages: "1"
     }
   );
+
+  const [selectedJob, setSelectedJob] = useState();
+
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  };
 
   return (
     <View style={styles.container}>
@@ -37,6 +45,8 @@ const Popularjobs = () => {
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
+                selectedJob={selectedJob}
+                handleCardPress={handleCardPress}
               />
             )}
             contentContainerStyle={{ columnGap: SIZES.medium }}
