@@ -64,4 +64,4 @@ router.get("/savedRecipes/:userID", async (req, res) => {
     }
 });
 
-export { router as recipeRouter };
+export { router as projectRouter };
