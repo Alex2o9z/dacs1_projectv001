@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useGetUserID } from '../hooks/useGetUserID.js';
 import { useCookies } from 'react-cookie';
+import { Hero } from "../components/home/Hero.js";
+import { HeadlineCards } from "../components/home/HeadlineCards.js";
+import { FeaturedRecipes } from "../components/home/FeaturedRecipes.js";
+import { Categories } from "../components/home/Categories.js";
 
 const URI = process.env.REACT_APP_SERVER_URL;
 
@@ -47,24 +51,17 @@ export const Home = () => {
 
 	return (
 		<div>
-			<h2>Recipes</h2>
-			<ul>
-				{recipes.map((recipe) => (
-					<li key={recipe._id}>
-						<div>
-							<h2>{recipe.name}</h2>
-							<button onClick={() => saveRecipe(recipe._id)} disabled={isRecipeSaved(recipe._id)}>
-								{isRecipeSaved(recipe._id) ? "Saved" : "Save"}
-							</button>
-						</div>
-						<div className='instruction'>
-							<p>{recipe.instruction}</p>
-						</div>
-						<img src={recipe.imageUrl} alt={recipe.name} />
-						<p>Cooking Time: {recipe.cookingTime} (minutes) </p>
-					</li>
-				))};
-			</ul>
+			{/* Hero component */}
+			<Hero />
+
+			{/* Headline Cards */}
+			<HeadlineCards />
+
+			{/* Featured Recipes */}
+			<FeaturedRecipes />
+
+			{/* Categories */}
+			<Categories />
 		</div>
 	);
 };
