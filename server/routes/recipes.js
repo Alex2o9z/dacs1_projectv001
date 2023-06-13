@@ -1,7 +1,7 @@
 import express from "express";
-import mongoose from "mongoose";
 import { RecipeModel } from "../models/Recipes.js";
 import { UserModel } from "../models/Users.js";
+import { RecipeTypeModel } from "../models/RecipeTypes.js";
 import { verifyToken } from './users.js';
 
 const router = express.Router();
@@ -9,8 +9,12 @@ const router = express.Router();
 // Fetch all recipe for home page API request
 router.get("/", async (req, res) => {
     try {
-        const respone = await RecipeModel.find({});
-        res.json(respone);
+        const recipes = await RecipeModel.find({});
+        const recipeTypes = await RecipeTypeModel.find({});
+        res.json({
+            "recipes": recipes,
+            "recipeTypes": recipeTypes,
+        });
     } catch (error) {
         res.json(error);
     }

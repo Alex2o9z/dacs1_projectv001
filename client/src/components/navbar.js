@@ -30,7 +30,7 @@ export const Navbar = () => {
 					</div>
 				</li>
 				<li className="p-4 min-w-fit"><Link to="/home"> Trang chủ</Link></li>
-				<li className="p-4 min-w-fit"><Link to="/create-recipe"> Tạo công thức</Link></li>
+				{/* <li className="p-4 min-w-fit"><Link to="/create-recipe"> Tạo công thức</Link></li> */}
 				{!cookie.access_token ? (<li className="p-4 min-w-fit"><Link to="/auth"> Đăng nhập / Đăng kí</Link></li>) : (
 					<>
 					<li className="p-4 min-w-fit"><Link to="/saved-recipes"> Công thức đã lưu</Link></li>
@@ -53,7 +53,7 @@ export const Navbar = () => {
 						</div>
 					</li>
 					<li className="p-4 border-b border-600"><Link to="/home"> Trang chủ</Link></li>
-					<li className="p-4 border-b"><Link to="/create-recipe"> Tạo công thức</Link></li>
+					{/* <li className="p-4 border-b"><Link to="/create-recipe"> Tạo công thức</Link></li> */}
 					{!cookie.access_token ? (<li className="p-4"><Link to="/auth"> Đăng nhập / Đăng kí</Link></li>) : (
 						<>
 						<li className="p-4 border-b"><Link to="/saved-recipes"> Công thức đã lưu</Link></li>
