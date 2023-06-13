@@ -5,6 +5,8 @@ import {} from "dotenv/config";
 import { userRouter } from "../routes/users.js";
 import { recipeRouter } from "../routes/recipes.js";
 import { ingredientRouter } from "../routes/ingredients.js";
+import { adminRecipeRouter } from "../routes/adminRecipes.js";
+import { adminUserRouter } from "../routes/adminUsers.js";
 
 const app = express();
 
@@ -17,6 +19,8 @@ app.use("/recipes", recipeRouter);
 
 // Admin Routers
 app.use("/admin/ingredients", ingredientRouter);
+app.use("/admin/recipes", adminRecipeRouter);
+app.use("/admin/users", adminUserRouter);
 
 // Connect to mongodb
 const URI = process.env.MONGODB_URL;

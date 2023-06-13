@@ -5,11 +5,7 @@ const RecipeSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    ingredients: [{
-        type: String,
-        require: true,
-    }],
-    instruction: {
+    description: {
         type: String,
         require: true,
     },
@@ -17,9 +13,101 @@ const RecipeSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    cookingTime: {
+    region: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "regions"
+    }],
+    type: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "recipetypes"
+    }],
+    nutritionFacts: {
+        calories: {
+            num: {
+                type: Number,
+                require: true,
+            },
+            unit: {
+                type: String,
+                require: true,
+            }
+        },
+        cholesterol: {
+            num: {
+                type: Number,
+                require: true,
+            },
+            unit: {
+                type: String,
+                require: true,
+            }
+        },
+        protein: {
+            num: {
+                type: Number,
+                require: true,
+            },
+            unit: {
+                type: String,
+                require: true,
+            }
+        },
+        caffeine: {
+            num: {
+                type: Number,
+                require: true,
+            },
+            unit: {
+                type: String,
+                require: true,
+            }
+        }
+    },
+    goodFor: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "healths"
+    }],
+    notGoodFor: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "healths"
+    }],
+    steps: [{ 
+        step: {
+            type: String,
+            require: true,
+        },
+        timing: {
+            type: Number,
+            require: true,
+        },
+    }],
+    prepare: { 
+        type: String,
+        require: true,
+    },
+    ingredients: [{ 
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "ingredients",
+        },
+        quantity: {
+            type: Number,
+            require: true,
+        }
+    }],
+    timing: {
         type: Number,
         require: true,
+    },
+    budgetPerUnit: {
+        budget: {
+            type: Number,
+            require: true,
+        },
+        unit: {
+            type: String,
+            require: true,
+        },
     },
     userOwner: {
         type: mongoose.Schema.Types.ObjectId,

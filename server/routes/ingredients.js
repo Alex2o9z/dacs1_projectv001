@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { HealthModel } from "../models/Healths.js";
 import { IngredientTypeModel } from "../models/IngredientTypes.js";
+import { RegionModel } from "../models/Regions.js";
 import { IngredientModel } from "../models/Ingredients.js";
 import { verifyToken } from './users.js';
 
@@ -22,9 +23,11 @@ router.get("/create", async (req, res) => {
     try {
         const healths = await HealthModel.find({});
         const ingredientTypes = await IngredientTypeModel.find({});
+        const regions = await RegionModel.find({});
         const response = {
             "healths": healths,
             "ingredientTypes": ingredientTypes,
+            "regions": regions,
         }
         res.json(response);
     } catch (error) {

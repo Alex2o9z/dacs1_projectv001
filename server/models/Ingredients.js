@@ -19,7 +19,7 @@ const IngredientSchema = new mongoose.Schema({
     }],
     type: [{ 
         type: mongoose.Schema.Types.ObjectId,
-        ref: "ingredientTypes"
+        ref: "ingredienttypes"
     }],
     nutritionFacts: {
         calories: {

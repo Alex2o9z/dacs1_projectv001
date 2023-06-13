@@ -7,4 +7,4 @@ const IngredientTypeSchema = new mongoose.Schema({
     }
 });
 
-export const IngredientTypeModel = mongoose.model("ingredientTypes", IngredientTypeSchema);
+export const IngredientTypeModel = mongoose.model("ingredienttypes", IngredientTypeSchema);
